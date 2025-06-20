@@ -1,0 +1,38 @@
+.features {
+  max-width: 1100px;
+  margin: 4rem auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 0 2rem;
+}
+.feature-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 2rem 1.5rem;
+  flex: 1 1 280px;
+  min-width: 260px;
+  max-width: 340px;
+  text-align: left;
+  transition: transform 0.15s;
+}
+.feature-card:hover {
+  transform: translateY(-6px) scale(1.03);
+}
+.feature-card h3 {
+  color: #3a86ff;
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+}
+.feature-card p {
+  color: #495057;
+  font-size: 1rem;
+}
+@media (max-width: 900px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+} 

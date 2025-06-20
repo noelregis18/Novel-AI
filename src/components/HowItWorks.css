@@ -1,0 +1,45 @@
+.how-it-works {
+  max-width: 900px;
+  margin: 4rem auto 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+.how-it-works h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #22223b;
+}
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.step {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 1.5rem 1rem;
+  flex: 1 1 200px;
+  min-width: 180px;
+  max-width: 260px;
+  margin-bottom: 1rem;
+}
+.step span {
+  display: inline-block;
+  background: #3a86ff;
+  color: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+@media (max-width: 900px) {
+  .steps {
+    flex-direction: column;
+    align-items: center;
+  }
+} 

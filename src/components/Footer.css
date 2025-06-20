@@ -1,0 +1,41 @@
+.footer {
+  background: #22223b;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
+  margin-top: 3rem;
+}
+.footer a {
+  color: #3a86ff;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: 500;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+.footer-contact {
+  margin-top: 1.5rem;
+}
+.footer-links {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.footer-links a {
+  margin: 0 0.3rem;
+  color: #3a86ff;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #fff;
+  background: #3a86ff;
+  border-radius: 4px;
+  padding: 0 0.3rem;
+}
+.footer > div:last-child {
+  margin-top: 1.2rem;
+} 

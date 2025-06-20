@@ -1,0 +1,63 @@
+.check-page-container {
+  max-width: 700px;
+  margin: 3rem auto 2rem auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 2.5rem 2rem 2rem 2rem;
+  text-align: center;
+}
+.check-page-container h2 {
+  color: #3a86ff;
+  margin-bottom: 1.5rem;
+}
+.check-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.check-form textarea {
+  resize: vertical;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e0e7ff;
+  min-height: 120px;
+  font-family: inherit;
+}
+.check-form .cta-btn {
+  align-self: flex-end;
+}
+.min-chars-note {
+  color: #d90429;
+  font-size: 0.98rem;
+  margin-top: -0.7rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+.error-msg {
+  color: #d90429;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.result-section {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-top: 1rem;
+  text-align: left;
+  word-break: break-word;
+}
+.ai-score {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+  color: #22223b;
+  text-align: center;
+}
+.result-section pre {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  color: #22223b;
+} 

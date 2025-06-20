@@ -1,0 +1,56 @@
+.navbar-header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+}
+.logo {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #3a86ff;
+  letter-spacing: 1px;
+}
+nav a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: #22223b;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #3a86ff;
+}
+.signup-btn {
+  background: #3a86ff;
+  color: #fff !important;
+  padding: 0.5rem 1.3rem;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-left: 2rem;
+  box-shadow: 0 2px 8px rgba(58,134,255,0.08);
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  display: inline-block;
+}
+.signup-btn:hover {
+  background: #265dbe;
+  color: #fff !important;
+}
+nav .cl-userButton-root {
+  margin-left: 2rem;
+}
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+} 

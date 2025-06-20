@@ -1,0 +1,58 @@
+.pricing {
+  max-width: 900px;
+  margin: 4rem auto 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+.pricing h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #22223b;
+}
+.pricing-tiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.tier {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 2rem 1.5rem;
+  flex: 1 1 220px;
+  min-width: 200px;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+.tier h3 {
+  color: #3a86ff;
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+}
+.tier .price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #22223b;
+  margin-bottom: 0.7rem;
+}
+.tier ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  color: #495057;
+  font-size: 1rem;
+}
+.tier ul li {
+  margin-bottom: 0.5rem;
+}
+.tier .cta-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+@media (max-width: 900px) {
+  .pricing-tiers {
+    flex-direction: column;
+    align-items: center;
+  }
+} 
