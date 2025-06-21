@@ -1,5 +1,4 @@
-// Use dynamic import for node-fetch to avoid CommonJS/ESM issues
-let fetch;
+const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {
   // Enable CORS
@@ -28,11 +27,6 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Initialize fetch if not already done
-    if (!fetch) {
-      fetch = (await import('node-fetch')).default;
-    }
-
     // Parse the request body
     const requestBody = JSON.parse(event.body);
     console.log('Function received:', requestBody);
