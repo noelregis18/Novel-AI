@@ -19,6 +19,8 @@ Set these in your Netlify dashboard under **Site settings > Environment variable
 | `REACT_APP_API_URL` | `https://novel-ai1.netlify.app/.netlify/functions` | ✅ Yes |
 | `NODE_ENV` | `production` | ❌ Optional |
 
+**Important:** The `REACT_APP_API_URL` should be the base functions URL. The code will automatically append `/aiContentDetection` to it.
+
 ## 📁 Project Structure
 ```
 novel-ai/
@@ -26,6 +28,7 @@ novel-ai/
 │   ├── functions/
 │   │   ├── aiContentDetection.js    # Winston AI API endpoint
 │   │   ├── test.js                  # Test function
+│   │   ├── debug.js                 # Debug function
 │   │   └── package.json             # Function dependencies
 │   └── netlify.toml                 # Netlify configuration
 ├── src/
@@ -42,12 +45,13 @@ novel-ai/
 - ✅ Added CORS support for cross-origin requests
 - ✅ Environment variable integration for Winston API key
 - ✅ Error handling and logging
-- ✅ Test function for debugging
+- ✅ Test and debug functions for troubleshooting
 
 ### 2. Frontend Updates
 - ✅ Updated `CheckPage.js` to use Netlify Function endpoint
 - ✅ Updated `App.js` to use environment variable for Clerk key
 - ✅ Added fallback values for development
+- ✅ Enhanced debugging and logging
 
 ### 3. Configuration Files
 - ✅ Created `netlify.toml` for build configuration
@@ -65,6 +69,11 @@ https://novel-ai1.netlify.app/.netlify/functions/aiContentDetection
 https://novel-ai1.netlify.app/.netlify/functions/test
 ```
 
+### Debug Function URL
+```
+https://novel-ai1.netlify.app/.netlify/functions/debug
+```
+
 ### Local Development
 ```
 http://localhost:8888/.netlify/functions/aiContentDetection
@@ -75,7 +84,7 @@ http://localhost:8888/.netlify/functions/aiContentDetection
 ### 1. Push to Git
 ```bash
 git add .
-git commit -m "Fix Netlify Function naming and add test function"
+git commit -m "Fix API URL construction and add debugging"
 git push origin main
 ```
 
@@ -108,29 +117,40 @@ curl -X POST https://novel-ai1.netlify.app/.netlify/functions/aiContentDetection
 curl https://novel-ai1.netlify.app/.netlify/functions/test
 ```
 
+### Test the Debug Function
+```bash
+curl https://novel-ai1.netlify.app/.netlify/functions/debug
+```
+
 ### Test the Frontend
 1. Visit `https://novel-ai1.netlify.app`
 2. Navigate to the AI Detection page
 3. Paste text and test the functionality
+4. Check browser console for debugging information
 
 ## 🔍 Troubleshooting
 
 ### Common Issues
 
-1. **Function not found (404)**
+1. **Method not allowed (405)**
+   - Check that the frontend is making POST requests
+   - Verify the API URL is correct
+   - Check browser console for the actual URL being called
+
+2. **Function not found (404)**
    - Check that `netlify.toml` is in the root directory
    - Verify the functions directory structure
    - Try the test function first: `/api/test`
 
-2. **CORS errors**
+3. **CORS errors**
    - The function includes CORS headers
    - Check browser console for specific errors
 
-3. **API key errors**
+4. **API key errors**
    - Verify `WINSTON_API_KEY` is set in Netlify environment variables
    - Check function logs in Netlify dashboard
 
-4. **Build failures**
+5. **Build failures**
    - Check that `node-fetch` is installed in functions directory
    - Verify Node.js version compatibility
 
@@ -139,6 +159,16 @@ View function logs in Netlify dashboard:
 1. Go to Functions tab
 2. Click on `aiContentDetection`
 3. Check the logs for any errors
+
+### Browser Console Debugging
+1. Open browser Developer Tools (F12)
+2. Go to Console tab
+3. Try the AI detection feature
+4. Look for logs showing:
+   - Environment variables
+   - Final API URL
+   - Request payload
+   - Response status and headers
 
 ## 🔒 Security Notes
 

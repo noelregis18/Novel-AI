@@ -3,7 +3,16 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './CheckPage.css';
 
-const API_URL = process.env.REACT_APP_API_URL || '/.netlify/functions/aiContentDetection';
+// Construct the API URL properly
+const API_URL = process.env.REACT_APP_API_URL 
+  ? `${process.env.REACT_APP_API_URL}/aiContentDetection`
+  : '/.netlify/functions/aiContentDetection';
+
+console.log('Environment variables:', {
+  REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+  NODE_ENV: process.env.NODE_ENV
+});
+console.log('Final API URL:', API_URL);
 
 function getAIScore(sentences) {
   if (!Array.isArray(sentences) || sentences.length === 0) return 'N/A';
@@ -24,6 +33,7 @@ const CheckPage = () => {
     setResult(null);
     
     console.log('Making API call to:', API_URL);
+    console.log('Request payload:', { text: input });
     
     try {
       const response = await fetch(API_URL, {
@@ -35,6 +45,7 @@ const CheckPage = () => {
       });
       
       console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
       
       if (!response.ok) {
         const errorData = await response.text();
