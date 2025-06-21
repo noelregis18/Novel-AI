@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './CheckPage.css';
 
-const API_URL = process.env.REACT_APP_API_URL || '/.netlify/functions/ai-content-detection';
+const API_URL = process.env.REACT_APP_API_URL || '/.netlify/functions/aiContentDetection';
 
 function getAIScore(sentences) {
   if (!Array.isArray(sentences) || sentences.length === 0) return 'N/A';
