@@ -5,8 +5,8 @@ import './CheckPage.css';
 
 // Construct the API URL properly
 const API_URL = process.env.REACT_APP_API_URL 
-  ? `${process.env.REACT_APP_API_URL}/aiContentDetection`
-  : '/.netlify/functions/aiContentDetection';
+  ? `${process.env.REACT_APP_API_URL}/ai-content-detection`
+  : '/.netlify/functions/ai-content-detection';
 
 console.log('Environment variables:', {
   REACT_APP_API_URL: process.env.REACT_APP_API_URL,
