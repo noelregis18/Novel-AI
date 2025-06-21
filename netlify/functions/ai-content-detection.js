@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+// Use dynamic import for node-fetch to avoid ES Module issues
+let fetch;
 
 exports.handler = async (event, context) => {
   // Enable CORS
@@ -27,6 +28,11 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    // Initialize fetch if not already done
+    if (!fetch) {
+      fetch = (await import('node-fetch')).default;
+    }
+
     // Parse the request body
     const requestBody = JSON.parse(event.body);
     console.log('Function received:', requestBody);
