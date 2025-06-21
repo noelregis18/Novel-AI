@@ -11,7 +11,7 @@ import { ClerkProvider } from '@clerk/clerk-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CheckPage from './pages/CheckPage';
 
-const clerkPubKey = 'pk_test_dGhhbmtmdWwtbGFtYi0zNS5jbGVyay5hY2NvdW50cy5kZXYk';
+const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || 'pk_test_dGhhbmtmdWwtbGFtYi0zNS5jbGVyay5hY2NvdW50cy5kZXYk';
 
 function Landing() {
   return (

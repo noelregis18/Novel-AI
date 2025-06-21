@@ -1,0 +1,8 @@
+{
+  "name": "novel-ai-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for Novel AI",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+} 
