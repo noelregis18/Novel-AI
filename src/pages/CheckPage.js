@@ -22,6 +22,9 @@ const CheckPage = () => {
     setLoading(true);
     setError('');
     setResult(null);
+    
+    console.log('Making API call to:', API_URL);
+    
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
@@ -30,11 +33,21 @@ const CheckPage = () => {
         },
         body: JSON.stringify({ text: input }),
       });
-      if (!response.ok) throw new Error('API error');
+      
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('API Error:', response.status, errorData);
+        throw new Error(`API error: ${response.status} - ${errorData}`);
+      }
+      
       const data = await response.json();
+      console.log('API Response:', data);
       setResult(data);
     } catch (err) {
-      setError('Failed to check text. Please try again.');
+      console.error('Fetch error:', err);
+      setError(`Failed to check text: ${err.message}`);
     } finally {
       setLoading(false);
     }

@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+// Use dynamic import for node-fetch to avoid CommonJS/ESM issues
+let fetch;
 
 exports.handler = async (event, context) => {
   // Enable CORS
@@ -27,9 +28,23 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    // Initialize fetch if not already done
+    if (!fetch) {
+      fetch = (await import('node-fetch')).default;
+    }
+
     // Parse the request body
     const requestBody = JSON.parse(event.body);
     console.log('Function received:', requestBody);
+
+    // Validate input
+    if (!requestBody.text || typeof requestBody.text !== 'string') {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Text field is required and must be a string' })
+      };
+    }
 
     // Get Winston API key from environment variable
     const WINSTON_API_KEY = process.env.WINSTON_API_KEY;
@@ -39,9 +54,11 @@ exports.handler = async (event, context) => {
       return {
         statusCode: 500,
         headers,
-        body: JSON.stringify({ error: 'Server configuration error' })
+        body: JSON.stringify({ error: 'Server configuration error - API key missing' })
       };
     }
+
+    console.log('Making request to Winston API...');
 
     // Make request to Winston API
     const response = await fetch('https://api.gowinston.ai/v2/ai-content-detection', {
@@ -56,11 +73,27 @@ exports.handler = async (event, context) => {
       }),
     });
 
+    console.log('Winston API response status:', response.status);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Winston API error:', response.status, errorText);
+      return {
+        statusCode: response.status,
+        headers,
+        body: JSON.stringify({ 
+          error: 'Winston API error', 
+          status: response.status,
+          details: errorText
+        })
+      };
+    }
+
     const data = await response.json();
-    console.log('Winston API response:', response.status, data);
+    console.log('Winston API response data received');
 
     return {
-      statusCode: response.status,
+      statusCode: 200,
       headers,
       body: JSON.stringify(data)
     };
@@ -72,7 +105,8 @@ exports.handler = async (event, context) => {
       headers,
       body: JSON.stringify({ 
         error: 'Internal server error', 
-        details: err.message 
+        details: err.message,
+        stack: err.stack
       })
     };
   }
